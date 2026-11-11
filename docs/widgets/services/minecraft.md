@@ -3,7 +3,7 @@ title: Minecraft
 description: Minecraft Widget Configuration
 ---
 
-Allowed fields: `["players", "version", "status"]`.
+Allowed fields: `["players", "version", "status", "latency"]`.
 
 ```yaml
 widget:

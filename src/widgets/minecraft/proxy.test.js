@@ -35,6 +35,7 @@ describe("widgets/minecraft/proxy", () => {
         version: { name: "1.20" },
         players: { online: 1, max: 10 },
       },
+      latency: 42,
     });
 
     const req = { query: { group: "g", service: "svc", index: "0" } };
@@ -42,12 +43,13 @@ describe("widgets/minecraft/proxy", () => {
 
     await minecraftProxyHandler(req, res);
 
-    expect(mc.lookup).toHaveBeenCalledWith({ host: "example.com", port: "25565" });
+    expect(mc.lookup).toHaveBeenCalledWith({ host: "example.com", port: "25565", ping: true });
     expect(res.statusCode).toBe(200);
     expect(res.body).toEqual({
       version: "1.20",
       online: true,
       players: { online: 1, max: 10 },
+      latency: 42,
     });
   });
 

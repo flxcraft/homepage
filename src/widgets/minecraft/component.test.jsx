@@ -23,10 +23,11 @@ describe("widgets/minecraft/component", () => {
       settings: { hideErrors: false },
     });
 
-    expect(container.querySelectorAll(".service-block")).toHaveLength(3);
+    expect(container.querySelectorAll(".service-block")).toHaveLength(4);
     expect(screen.getByText("minecraft.status")).toBeInTheDocument();
     expect(screen.getByText("minecraft.players")).toBeInTheDocument();
     expect(screen.getByText("minecraft.version")).toBeInTheDocument();
+    expect(screen.getByText("minecraft.latency")).toBeInTheDocument();
   });
 
   it("renders error UI when status endpoint errors", () => {
@@ -44,6 +45,7 @@ describe("widgets/minecraft/component", () => {
         online: true,
         players: { online: 2, max: 10 },
         version: "1.20.1",
+        latency: 42,
       },
       error: undefined,
     });
@@ -55,5 +57,6 @@ describe("widgets/minecraft/component", () => {
     expectBlockValue(container, "minecraft.status", "minecraft.up");
     expectBlockValue(container, "minecraft.players", "2 / 10");
     expectBlockValue(container, "minecraft.version", "1.20.1");
+    expectBlockValue(container, "minecraft.latency", "42 ms");
   });
 });

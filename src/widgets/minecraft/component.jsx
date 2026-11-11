@@ -18,6 +18,7 @@ export default function Component({ service }) {
         <Block label="minecraft.status" />
         <Block label="minecraft.players" />
         <Block label="minecraft.version" />
+        <Block label="minecraft.latency" />
       </Container>
     );
   }
@@ -25,12 +26,14 @@ export default function Component({ service }) {
   const statusIndicator = serverData.online ? t("minecraft.up") : t("minecraft.down");
   const players = serverData.players ? `${serverData.players.online} / ${serverData.players.max}` : "-";
   const version = serverData.version || "-";
+  const latency = serverData.latency != null ? `${serverData.latency} ms` : "-";
 
   return (
     <Container service={service}>
       <Block label="minecraft.status" value={statusIndicator} />
       <Block label="minecraft.players" value={players} />
       <Block label="minecraft.version" value={version} />
+      <Block label="minecraft.latency" value={latency} />
     </Container>
   );
 }

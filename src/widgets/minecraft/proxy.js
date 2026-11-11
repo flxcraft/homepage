@@ -14,11 +14,13 @@ export default async function minecraftProxyHandler(req, res) {
     const pingResponse = await mc.lookup({
       host: url.hostname,
       port: url.port || 25565,
+      ping: true,
     });
     res.status(200).send({
       version: pingResponse.status.version.name,
       online: true,
       players: pingResponse.status.players,
+      latency: pingResponse.latency,
     });
   } catch (e) {
     if (e) logger.error(e);
@@ -26,6 +28,7 @@ export default async function minecraftProxyHandler(req, res) {
       version: undefined,
       online: false,
       players: undefined,
+      latency: undefined,
     });
   }
 }

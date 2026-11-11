@@ -491,7 +491,8 @@
         "version": "Version",
         "status": "Status",
         "up": "Online",
-        "down": "Offline"
+        "down": "Offline",
+        "latency": "Latency"
     },
     "miniflux": {
         "read": "Read",
